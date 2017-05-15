@@ -1,0 +1,53 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+require(tidyverse)
+require(xgboost)
+require(methods)
+```
+
+
+
+```{r read_csv_data, echo=TRUE}
+
+testsize = 550000
+dchurn <- read_csv('/Users/mrbirdsall/Code/ziff/data/churn.csv', )
+dchurn$`Int'l Plan` = as.numeric(dchurn$`Int'l Plan` == 'yes' )
+dchurn$`VMail Plan` = as.numeric(dchurn$`VMail Plan` == 'yes' )
+is.na(dchurn) <- dchurn == '?'
+
+label <- as.numeric( dchurn$`Churn?` == 'True.')
+
+dchurn$`Day Charge` <- as.numeric(dchurn$`Day Charge`)
+dchurn$`Eve Mins` <- as.numeric(dchurn$`Eve Mins`)
+dchurn$`Eve Calls` <- as.numeric(dchurn$`Eve Calls`)
+dchurn$`Night Charge` <- as.numeric(dchurn$`Night Charge`)
+dchurn$`Intl Calls` <- as.numeric(dchurn$`Intl Calls`)
+dchurn$`Intl Charge` <- as.numeric(dchurn$`Intl Charge`)
+
+
+
+data <- dchurn %>%
+  select(-X1, -`Area Code`, -Phone, -`Churn?`) %>%
+  mutate(state = as.factor(State)) %>%
+  mutate_if(is.character, as.numeric) %>%
+  select(-State, -state)
+
+data <- as.matrix(data)
+
+weight <- as.numeric( rep(1,3333) ) * testsize / length(label)
+
+save(data, file='data')
+save()
+```
+
+We need to look at the data some more, but I want to fit a boosted model with all of the variables to see what set of errors I get.
+
+```{r}
+bst.cv <- xgb.cv(data = data , nfold = 10, label = label, nround = 5, objective = 'binary:logistic', eval_metric = 'auc')
+```
+

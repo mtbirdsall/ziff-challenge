@@ -1,0 +1,9 @@
+{
+    "path" : "~/Code/ziff/churn/churn-r",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+"0","data <- dchurn %>%
+  select(-X1, -`Area Code`, -Phone, -`Churn?`) %>%
+  mutate(state = as.factor(State)) %>%
+  mutate_if(is.character, as.numeric) %>%
+  select(-State, -state)
+"
+"2","NAs introduced by coercion"

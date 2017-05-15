@@ -1,0 +1,532 @@
+"0","install.packages('tidytext')
+"
+"2","Installing package into ‘/usr/local/lib/R/3.4/site-library’
+(as ‘lib’ is unspecified)
+"
+"2","also installing the dependencies ‘SnowballC’, ‘hunspell’, ‘tokenizers’, ‘janeaustenr’
+
+"
+"2","trying URL 'https://cran.rstudio.com/src/contrib/SnowballC_0.5.1.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 3044522 bytes (2.9 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 2.9 MB
+
+"
+"2","trying URL 'https://cran.rstudio.com/src/contrib/hunspell_2.4.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 3115300 bytes (3.0 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 3.0 MB
+
+"
+"2","trying URL 'https://cran.rstudio.com/src/contrib/tokenizers_0.1.4.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 50453 bytes (49 KB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 49 KB
+
+"
+"2","trying URL 'https://cran.rstudio.com/src/contrib/janeaustenr_0.1.4.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 1129841 bytes (1.1 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 1.1 MB
+
+"
+"2","trying URL 'https://cran.rstudio.com/src/contrib/tidytext_0.1.2.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 2665175 bytes (2.5 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 2.5 MB
+
+"
+"2","* installing *source* package ‘SnowballC’ ...
+"
+"2","** package ‘SnowballC’ successfully unpacked and MD5 sums checked
+"
+"2","** libs
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c api.c -o api.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c libstemmer_utf8.c -o libstemmer_utf8.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem.c -o stem.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_danish.c -o stem_UTF_8_danish.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_dutch.c -o stem_UTF_8_dutch.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_english.c -o stem_UTF_8_english.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_finnish.c -o stem_UTF_8_finnish.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_french.c -o stem_UTF_8_french.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_german.c -o stem_UTF_8_german.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_hungarian.c -o stem_UTF_8_hungarian.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_italian.c -o stem_UTF_8_italian.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_norwegian.c -o stem_UTF_8_norwegian.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_porter.c -o stem_UTF_8_porter.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_portuguese.c -o stem_UTF_8_portuguese.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_romanian.c -o stem_UTF_8_romanian.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_russian.c -o stem_UTF_8_russian.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_spanish.c -o stem_UTF_8_spanish.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_swedish.c -o stem_UTF_8_swedish.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c stem_UTF_8_turkish.c -o stem_UTF_8_turkish.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG   -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c utilities.c -o utilities.o
+"
+"1","clang -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/lib -L/usr/local/opt/gettext/lib -L/usr/local/opt/readline/lib -L/usr/local/lib -o SnowballC.so api.o libstemmer_utf8.o stem.o stem_UTF_8_danish.o stem_UTF_8_dutch.o stem_UTF_8_english.o stem_UTF_8_finnish.o stem_UTF_8_french.o stem_UTF_8_german.o stem_UTF_8_hungarian.o stem_UTF_8_italian.o stem_UTF_8_norwegian.o stem_UTF_8_porter.o stem_U"
+"1","TF_8_portuguese.o stem_UTF_8_romanian.o stem_UTF_8_russian.o stem_UTF_8_spanish.o stem_UTF_8_swedish.o stem_UTF_8_turkish.o utilities.o -F/usr/local/Cellar/r/3.4.0_1/R.framework/.. -framework R -lintl -Wl,-framework -Wl,CoreFoundation
+"
+"2","installing to /usr/local/lib/R/3.4/site-library/SnowballC/libs
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** preparing package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded
+"
+"2","* DONE (SnowballC)
+"
+"2","* installing *source* package ‘hunspell’ ...
+"
+"2","** package ‘hunspell’ successfully unpacked and MD5 sums checked
+"
+"2","** libs
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c RcppExports.cpp -o RcppExports.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c check.cpp -o check.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c find.cpp -o find.o
+"
+"1","clang -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2  -c register.c -o register.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c parsers/textparser.cc -o parsers/textparser.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c parsers/latexparser.cc -o parsers/latexparser.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c parsers/manparser.cc -o parsers/manparser.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c parsers/xmlparser.cc -o parsers/xmlparser.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c parsers/htmlparser.cc -o parsers/htmlparser.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/affentry.cc -o hunspell/affentry.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/affixmgr.cc -o hunspell/affixmgr.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/filemgr.cc -o hunspell/filemgr.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/hashmgr.cc -o hunspell/hashmgr.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/hunspell.cc -o hunspell/hunspell.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/hunzip.cc -o hunspell/hunzip.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/phonet.cc -o hunspell/phonet.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/replist.cc -o hunspell/replist.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/suggestmgr.cc -o hunspell/suggestmgr.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG -I. -Ihunspell -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include  -DBUILDING_LIBHUNSPELL -fPIC  -g -O2 -c hunspell/csutil.cc -o hunspell/csutil.o
+"
+"1","ar rcs libstathunspell.a parsers/textparser.o parsers/latexparser.o parsers/manparser.o parsers/xmlparser.o parsers/htmlparser.o hunspell/affentry.o hunspell/affixmgr.o hunspell/filemgr.o hunspell/hashmgr.o hunspell/hunspell.o hunspell/hunzip.o hunspell/phonet.o hunspell/replist.o hunspell/suggestmgr.o hunspell/csutil.o
+"
+"1","clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/usr/local/opt/gettext/lib -L/usr/local/opt/readline/lib -L/usr/local/lib -L/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/lib -L/usr/local/opt/gettext/lib -L/usr/local/opt/readline/lib -L/usr/local/lib -o hunspell.so RcppExports.o check.o find.o register.o -L. -lstathunspell -F/usr/local/Cellar/r/3.4.0_1/R.framework/.. -framework R -lintl -Wl,-framework -Wl,CoreFoundati"
+"1","on
+"
+"2","installing to /usr/local/lib/R/3.4/site-library/hunspell/libs
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** preparing package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded
+"
+"2","* DONE (hunspell)
+"
+"2","* installing *source* package ‘janeaustenr’ ...
+"
+"2","** package ‘janeaustenr’ successfully unpacked and MD5 sums checked
+"
+"2","** R
+"
+"2","** data
+"
+"2","*** moving datasets to lazyload DB
+"
+"2","** preparing package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded
+"
+"2","* DONE (janeaustenr)
+"
+"2","* installing *source* package ‘tokenizers’ ...
+"
+"2","** package ‘tokenizers’ successfully unpacked and MD5 sums checked
+"
+"2","** libs
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG  -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2 -c RcppExports.cpp -o RcppExports.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG  -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2 -c shingle_ngrams.cpp -o shingle_ngrams.o
+"
+"1","clang++ -std=gnu++11 -I/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/include -DNDEBUG  -I""/usr/local/lib/R/3.4/site-library/Rcpp/include"" -I/usr/local/opt/gettext/include -I/usr/local/opt/readline/include -I/usr/local/include   -fPIC  -g -O2 -c skip_ngrams.cpp -o skip_ngrams.o
+"
+"1","clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/usr/local/opt/gettext/lib -L/usr/local/opt/readline/lib -L/usr/local/lib -L/usr/local/Cellar/r/3.4.0_1/R.framework/Resources/lib -L/usr/local/opt/gettext/lib -L/usr/local/opt/readline/lib -L/usr/local/lib -o tokenizers.so RcppExports.o shingle_ngrams.o skip_ngrams.o -F/usr/local/Cellar/r/3.4.0_1/R.framework/.. -framework R -lintl -Wl,-framework -Wl,CoreFoundation
+"
+"2","installing to /usr/local/lib/R/3.4/site-library/tokenizers/libs
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** preparing package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded
+"
+"2","* DONE (tokenizers)
+"
+"2","* installing *source* package ‘tidytext’ ...
+"
+"2","** package ‘tidytext’ successfully unpacked and MD5 sums checked
+"
+"2","** R
+"
+"2","** data
+"
+"2","*** moving datasets to lazyload DB
+"
+"2","** inst
+"
+"2","** preparing package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded
+"
+"2","* DONE (tidytext)
+"
+"2","
+"
+"2","The downloaded source packages are in
+	‘/private/var/folders/ty/9cxr_3mx1nq1hjxbwlfpp9x80000gn/T/RtmpQBLH3E/downloaded_packages’"
+"2","
+"

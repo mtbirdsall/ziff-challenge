@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"R Notebook\"\noutput: html_notebook\n---\n\n\n```{r}\nrequire(tidyverse)\nrequire(xgboost)\nrequire(methods)\n```\n\n\n\n```{r read_csv_data, echo=TRUE}\n\ndchurn <- read_csv('/Users/mrbirdsall/Code/ziff/data/churn.csv', )\ndchurn$`Int'l Plan` = as.numeric(dchurn$`Int'l Plan` == 'yes' )\ndchurn$`VMail Plan` = as.numeric(dchurn$`VMail Plan` == 'yes' )\nis.na(dchurn) <- dchurn == '?'\n\nlabel <- as.numeric( dchurn$`Churn?` == 'True.')\n\ndchurn$`Day Charge` <- as.numeric(dchurn$`Day Charge`)\ndchurn$`Eve Mins` <- as.numeric(dchurn$`Eve Mins`)\ndchurn$`Eve Calls` <- as.numeric(dchurn$`Eve Calls`)\ndchurn$`Night Charge` <- as.numeric(dchurn$`Night Charge`)\ndchurn$`Intl Calls` <- as.numeric(dchurn$`Intl Calls`)\ndchurn$`Intl Charge` <- as.numeric(dchurn$`Intl Charge`)\n\n\n\ndata <- dchurn %>%\n  select(-X1, -`Area Code`, -Phone, -`Churn?`) %>%\n  mutate(state = as.factor(State)) %>%\n  mutate_if(is.character, as.numeric) %>%\n  select(-State, -state)\n\ndata <- as.matrix(data)\n\nweight <- as.numeric( rep(1,3333) ) * testsize / length(label)\n\nsave(data, file='data')\nsave(label, file='label')\n\n```\n\nWe need to look at the data some more, but I want to fit a boosted model with all of the variables to see what set of errors I get.\n\n```{r}\nbst.cv <- xgb.cv(data = data , nfold = 10, label = label, nround = 5, objective = 'binary:logistic', eval_metric = 'auc')\n```\n\n",
+    "created" : 1494825933141.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3959785483",
+    "id" : "E00D9CC6",
+    "lastKnownWriteTime" : 1494837167,
+    "last_content_update" : 1494837597424,
+    "path" : "~/Code/ziff/churn/churn-r/chur-analysis.Rmd",
+    "project_path" : "chur-analysis.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
