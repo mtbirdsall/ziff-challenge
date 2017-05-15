@@ -142,7 +142,7 @@ $(document).ready(function () {
 </style>
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("chur-analysis.Rmd");
+  window.initializeSourceEmbed("sentiment.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
@@ -176,88 +176,137 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGNodXJuIDwtIHJlYWRfY3N2KCcvVXNlcnMvbXJiaXJkc2FsbC9Db2RlL3ppZmYvemlmZi1jaGFsbGVuZ2UvZGF0YS9jaHVybi5jc3YnLCApXG5gYGAifQ== -->
-<pre class="r"><code>dchurn &lt;- read_csv('/Users/mrbirdsall/Code/ziff/ziff-challenge/data/churn.csv', )</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTWlzc2luZyBjb2x1bW4gbmFtZXMgZmlsbGVkIGluOiAnWDEnIFsxXVBhcnNlZCB3aXRoIGNvbHVtbiBzcGVjaWZpY2F0aW9uOlxuY29scyhcbiAgLmRlZmF1bHQgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFgxID0gY29sX2ludGVnZXIoKSxcbiAgYEFjY291bnQgTGVuZ3RoYCA9IGNvbF9pbnRlZ2VyKCksXG4gIGBWTWFpbCBNZXNzYWdlYCA9IGNvbF9pbnRlZ2VyKCksXG4gIGBEYXkgTWluc2AgPSBjb2xfZG91YmxlKCksXG4gIGBEYXkgQ2FsbHNgID0gY29sX2ludGVnZXIoKSxcbiAgYEV2ZSBDaGFyZ2VgID0gY29sX2RvdWJsZSgpLFxuICBgTmlnaHQgTWluc2AgPSBjb2xfZG91YmxlKCksXG4gIGBOaWdodCBDYWxsc2AgPSBjb2xfaW50ZWdlcigpLFxuICBgSW50bCBNaW5zYCA9IGNvbF9kb3VibGUoKSxcbiAgYEN1c3RTZXJ2IENhbGxzYCA9IGNvbF9pbnRlZ2VyKClcbilcblNlZSBzcGVjKC4uLikgZm9yIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb25zLlxuIn0= -->
-<pre><code>Missing column names filled in: 'X1' [1]Parsed with column specification:
-cols(
-  .default = col_character(),
-  X1 = col_integer(),
-  `Account Length` = col_integer(),
-  `VMail Message` = col_integer(),
-  `Day Mins` = col_double(),
-  `Day Calls` = col_integer(),
-  `Eve Charge` = col_double(),
-  `Night Mins` = col_double(),
-  `Night Calls` = col_integer(),
-  `Intl Mins` = col_double(),
-  `CustServ Calls` = col_integer()
-)
-See spec(...) for full column specifications.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGNodXJuJGBJbnQnbCBQbGFuYCA9IGFzLm51bWVyaWMoZGNodXJuJGBJbnQnbCBQbGFuYCA9PSAneWVzJyApXG5kY2h1cm4kYFZNYWlsIFBsYW5gID0gYXMubnVtZXJpYyhkY2h1cm4kYFZNYWlsIFBsYW5gID09ICd5ZXMnIClcbmlzLm5hKGRjaHVybikgPC0gZGNodXJuID09ICc/J1xubGFiZWwgPC0gYXMubnVtZXJpYyggZGNodXJuJGBDaHVybj9gID09ICdUcnVlLicpXG5kY2h1cm4kYERheSBDaGFyZ2VgIDwtIGFzLm51bWVyaWMoZGNodXJuJGBEYXkgQ2hhcmdlYClcbmRjaHVybiRgRXZlIE1pbnNgIDwtIGFzLm51bWVyaWMoZGNodXJuJGBFdmUgTWluc2ApXG5kY2h1cm4kYEV2ZSBDYWxsc2AgPC0gYXMubnVtZXJpYyhkY2h1cm4kYEV2ZSBDYWxsc2ApXG5kY2h1cm4kYE5pZ2h0IENoYXJnZWAgPC0gYXMubnVtZXJpYyhkY2h1cm4kYE5pZ2h0IENoYXJnZWApXG5kY2h1cm4kYEludGwgQ2FsbHNgIDwtIGFzLm51bWVyaWMoZGNodXJuJGBJbnRsIENhbGxzYClcbmRjaHVybiRgSW50bCBDaGFyZ2VgIDwtIGFzLm51bWVyaWMoZGNodXJuJGBJbnRsIENoYXJnZWApXG5kYXRhIDwtIGRjaHVybiAlPiVcbiAgc2VsZWN0KC1YMSwgLWBBcmVhIENvZGVgLCAtUGhvbmUsIC1gQ2h1cm4/YCkgJT4lXG4gIG11dGF0ZShzdGF0ZSA9IGFzLmZhY3RvcihTdGF0ZSkpICU+JVxuICBtdXRhdGVfaWYoaXMuY2hhcmFjdGVyLCBhcy5udW1lcmljKSAlPiVcbiAgc2VsZWN0KC1TdGF0ZSwgLXN0YXRlKVxuYGBgIn0= -->
-<pre class="r"><code>dchurn$`Int'l Plan` = as.numeric(dchurn$`Int'l Plan` == 'yes' )
-dchurn$`VMail Plan` = as.numeric(dchurn$`VMail Plan` == 'yes' )
-is.na(dchurn) &lt;- dchurn == '?'
-label &lt;- as.numeric( dchurn$`Churn?` == 'True.')
-dchurn$`Day Charge` &lt;- as.numeric(dchurn$`Day Charge`)
-dchurn$`Eve Mins` &lt;- as.numeric(dchurn$`Eve Mins`)
-dchurn$`Eve Calls` &lt;- as.numeric(dchurn$`Eve Calls`)
-dchurn$`Night Charge` &lt;- as.numeric(dchurn$`Night Charge`)
-dchurn$`Intl Calls` &lt;- as.numeric(dchurn$`Intl Calls`)
-dchurn$`Intl Charge` &lt;- as.numeric(dchurn$`Intl Charge`)
-data &lt;- dchurn %&gt;%
-  select(-X1, -`Area Code`, -Phone, -`Churn?`) %&gt;%
-  mutate(state = as.factor(State)) %&gt;%
-  mutate_if(is.character, as.numeric) %&gt;%
-  select(-State, -state)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTkFzIGludHJvZHVjZWQgYnkgY29lcmNpb25cbiJ9 -->
-<pre><code>NAs introduced by coercion</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YSA8LSBhcy5tYXRyaXgoZGF0YSlcbndlaWdodCA8LSBhcy5udW1lcmljKCByZXAoMSwzMzMzKSApIC8gbGVuZ3RoKGxhYmVsKVxuc2F2ZShkYXRhLCBmaWxlPSdkYXRhJylcbnNhdmUobGFiZWwsIGZpbGU9J2xhYmVsJylcbmBgYCJ9 -->
-<pre class="r"><code>data &lt;- as.matrix(data)
-weight &lt;- as.numeric( rep(1,3333) ) / length(label)
-save(data, file='data')
-save(label, file='label')</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>We need to look at the data some more, but I want to fit a boosted model with all of the variables to see what set of errors I get.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYnN0LmN2IDwtIHhnYi5jdihkYXRhID0gZGF0YSAsIG5mb2xkID0gMTAsIGxhYmVsID0gbGFiZWwsIG5yb3VuZCA9IDIwLCBvYmplY3RpdmUgPSAnYmluYXJ5OmxvZ2lzdGljJywgZXZhbF9tZXRyaWMgPSAnYXVjJylcblxuYGBgIn0= -->
-<pre class="r"><code>bst.cv &lt;- xgb.cv(data = data , nfold = 10, label = label, nround = 20, objective = 'binary:logistic', eval_metric = 'auc')
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXNnX3dvcmRzIDwtIGxlZnRfam9pbihtc2dfd29yZHMsIHR0bF93b3JkcylcblxuYGBgIn0= -->
+<pre class="r"><code>msg_words &lt;- left_join(msg_words, ttl_words)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdXHR0cmFpbi1hdWM6MC45MDQxMDkrMC4wMDM5NDVcdHRlc3QtYXVjOjAuODgzMTQ1KzAuMDMxODQ2IFxuWzJdXHR0cmFpbi1hdWM6MC45MTI2MTUrMC4wMDU0ODJcdHRlc3QtYXVjOjAuODg3OTUwKzAuMDM0NzA5IFxuWzNdXHR0cmFpbi1hdWM6MC45MjA1MjUrMC4wMDQxNjJcdHRlc3QtYXVjOjAuODk3NjI2KzAuMDMxNzM4IFxuWzRdXHR0cmFpbi1hdWM6MC45MjgwODArMC4wMDI2ODNcdHRlc3QtYXVjOjAuOTAwNDYwKzAuMDMyNTE2IFxuWzVdXHR0cmFpbi1hdWM6MC45MzQwMzcrMC4wMDM5MzNcdHRlc3QtYXVjOjAuOTAwNjY5KzAuMDI5NzI1IFxuWzZdXHR0cmFpbi1hdWM6MC45NDA1MTYrMC4wMDMzMzRcdHRlc3QtYXVjOjAuOTAwMjU3KzAuMDI5OTg3IFxuWzddXHR0cmFpbi1hdWM6MC45NDcxNDIrMC4wMDI5NjhcdHRlc3QtYXVjOjAuOTAxMjE3KzAuMDI2OTE5IFxuWzhdXHR0cmFpbi1hdWM6MC45NTYxNjMrMC4wMDMxMDhcdHRlc3QtYXVjOjAuODk4MjkxKzAuMDI5OTAwIFxuWzldXHR0cmFpbi1hdWM6MC45NjM2OTMrMC4wMDM0NzhcdHRlc3QtYXVjOjAuODk4NjczKzAuMDMxMDk3IFxuWzEwXVx0dHJhaW4tYXVjOjAuOTY4NjgxKzAuMDAyODMxXHR0ZXN0LWF1YzowLjg5NjE4NyswLjAyOTg3NSBcblsxMV1cdHRyYWluLWF1YzowLjk3NTg1OCswLjAwMTM2MFx0dGVzdC1hdWM6MC44OTU1OTgrMC4wMzEwMDcgXG5bMTJdXHR0cmFpbi1hdWM6MC45ODA1MTIrMC4wMDI0OTJcdHRlc3QtYXVjOjAuODk2NDQ1KzAuMDMyMzgzIFxuWzEzXVx0dHJhaW4tYXVjOjAuOTg0NTc2KzAuMDAxOTA0XHR0ZXN0LWF1YzowLjg5Nzc3MCswLjAzMTkyMyBcblsxNF1cdHRyYWluLWF1YzowLjk4Njk3NiswLjAwMTM1Mlx0dGVzdC1hdWM6MC45MDA3NTgrMC4wMzM4NjggXG5bMTVdXHR0cmFpbi1hdWM6MC45ODk1MzArMC4wMDEyMjhcdHRlc3QtYXVjOjAuOTAxMTIwKzAuMDMyMDUwIFxuWzE2XVx0dHJhaW4tYXVjOjAuOTkxMTgwKzAuMDAxNDUyXHR0ZXN0LWF1YzowLjkwMjI2OSswLjAzMTYxMCBcblsxN11cdHRyYWluLWF1YzowLjk5Mjc5MiswLjAwMTExNlx0dGVzdC1hdWM6MC45MDI2MDkrMC4wMjk5NzggXG5bMThdXHR0cmFpbi1hdWM6MC45OTQzMDkrMC4wMDEwMjhcdHRlc3QtYXVjOjAuOTA0NDY2KzAuMDI4MDA1IFxuWzE5XVx0dHJhaW4tYXVjOjAuOTk1Mzc0KzAuMDAxMTUzXHR0ZXN0LWF1YzowLjkwNDYyMSswLjAyODQwMiBcblsyMF1cdHRyYWluLWF1YzowLjk5NjM3MiswLjAwMDk4Nlx0dGVzdC1hdWM6MC45MDUwMTUrMC4wMjk1NjIgXG4ifQ== -->
-<pre><code>[1] train-auc:0.904109+0.003945 test-auc:0.883145+0.031846 
-[2] train-auc:0.912615+0.005482 test-auc:0.887950+0.034709 
-[3] train-auc:0.920525+0.004162 test-auc:0.897626+0.031738 
-[4] train-auc:0.928080+0.002683 test-auc:0.900460+0.032516 
-[5] train-auc:0.934037+0.003933 test-auc:0.900669+0.029725 
-[6] train-auc:0.940516+0.003334 test-auc:0.900257+0.029987 
-[7] train-auc:0.947142+0.002968 test-auc:0.901217+0.026919 
-[8] train-auc:0.956163+0.003108 test-auc:0.898291+0.029900 
-[9] train-auc:0.963693+0.003478 test-auc:0.898673+0.031097 
-[10]    train-auc:0.968681+0.002831 test-auc:0.896187+0.029875 
-[11]    train-auc:0.975858+0.001360 test-auc:0.895598+0.031007 
-[12]    train-auc:0.980512+0.002492 test-auc:0.896445+0.032383 
-[13]    train-auc:0.984576+0.001904 test-auc:0.897770+0.031923 
-[14]    train-auc:0.986976+0.001352 test-auc:0.900758+0.033868 
-[15]    train-auc:0.989530+0.001228 test-auc:0.901120+0.032050 
-[16]    train-auc:0.991180+0.001452 test-auc:0.902269+0.031610 
-[17]    train-auc:0.992792+0.001116 test-auc:0.902609+0.029978 
-[18]    train-auc:0.994309+0.001028 test-auc:0.904466+0.028005 
-[19]    train-auc:0.995374+0.001153 test-auc:0.904621+0.028402 
-[20]    train-auc:0.996372+0.000986 test-auc:0.905015+0.029562 </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiSm9pbmluZywgYnkgPSBcImVsZW1lbnRfaWRcIlxuIn0= -->
+<pre><code>Joining, by = &quot;element_id&quot;</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YS5tYXRyaXgodGV4dFNwYXJzZSlcblxuYGBgIn0= -->
+<pre class="r"><code>data.matrix(textSparse)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBhbmQgZm9yd2FyZCBoYXZlIGxvb2sgdGhlIHdpdGggY291bGQgZm9sbG93IHJlYWxsaSB3b3VsZCB5b3VcbjEgICAgICAxICAgICAgIDEgICAgMSAgICAxICAgMiAgICAxICAgICAwICAgICAgMCAgICAgIDAgICAgIDAgICAwXG4yICAgICAgMCAgICAgICAwICAgIDAgICAgMCAgIDAgICAgMCAgICAgMSAgICAgIDEgICAgICAxICAgICAxICAgMVxuMyAgICAgIDAgICAgICAgMCAgICAwICAgIDAgICAwICAgIDAgICAgIDAgICAgICAwICAgICAgMCAgICAgMCAgIDBcbiAgICAgZm9yLiBwZXJzb24gdGVsbCB0aGluayB0aGlzIHdlcmUgd2hpIGFib3V0IGZvb2QgaGFkIG91dCB0aGF0XG4xICAgICAgIDAgICAgICAwICAgIDAgICAgIDAgICAgMCAgICAwICAgMCAgICAgMCAgICAwICAgMCAgIDAgICAgMFxuMiAgICAgICAwICAgICAgMCAgICAwICAgICAwICAgIDAgICAgMCAgIDAgICAgIDAgICAgMCAgIDAgICAwICAgIDBcbjMgICAgICAgMSAgICAgIDEgICAgMSAgICAgMSAgICAxICAgIDEgICAxICAgICAwICAgIDAgICAwICAgMCAgICAwXG4gICAgIHRoZXkgZnJpZW5kIHF1b3QgeWVzIHdvcmsgYnV0IGNvbSBoYXRlIGh0dHAgZWF0IHNhaWQgaGFzIHBvb3JcbjEgICAgICAgMCAgICAgIDAgICAgMCAgIDAgICAgMCAgIDAgICAwICAgIDAgICAgMCAgIDAgICAgMCAgIDAgICAgMFxuMiAgICAgICAwICAgICAgMCAgICAwICAgMCAgICAwICAgMCAgIDAgICAgMCAgICAwICAgMCAgICAwICAgMCAgICAwXG4zICAgICAgIDAgICAgICAwICAgIDAgICAwICAgIDAgICAwICAgMCAgICAwICAgIDAgICAwICAgIDAgICAwICAgIDBcbiAgICAgc3RpbGwgdGhpbmcgd29uIHllYWggc2F5IGNhbGwgZnJvbSBoZXJlIG5vdyBwbGFjZSB0YWtlIHdoZXJlXG4xICAgICAgICAwICAgICAwICAgMCAgICAwICAgMCAgICAwICAgIDAgICAgMCAgIDAgICAgIDAgICAgMCAgICAgMFxuMiAgICAgICAgMCAgICAgMCAgIDAgICAgMCAgIDAgICAgMCAgICAwICAgIDAgICAwICAgICAwICAgIDAgICAgIDBcbjMgICAgICAgIDAgICAgIDAgICAwICAgIDAgICAwICAgIDAgICAgMCAgICAwICAgMCAgICAgMCAgICAwICAgICAwXG4gICAgIGFnYWluIHNsZWVwIGRvd24gZ2V0IGxpa2UgZm9yZ290IGhvdyBzb21lb24gc29vIGZpbmQgZ2lybCBsaXR0bFxuMSAgICAgICAgMCAgICAgMCAgICAwICAgMCAgICAwICAgICAgMCAgIDAgICAgICAwICAgMCAgICAwICAgIDAgICAgIDBcbjIgICAgICAgIDAgICAgIDAgICAgMCAgIDAgICAgMCAgICAgIDAgICAwICAgICAgMCAgIDAgICAgMCAgICAwICAgICAwXG4zICAgICAgICAwICAgICAwICAgIDAgICAwICAgIDAgICAgICAwICAgMCAgICAgIDAgICAwICAgIDAgICAgMCAgICAgMFxuICAgICBzaGUgc29tZSB0aW1lIHZvdGUgbGF0ZSBib3JlIGhvdXIganVzdCBwbGF5IHRvbyBiYWNrIGV2ZXJ5b25cbjEgICAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgIDAgICAgMCAgICAgICAwXG4yICAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAwICAgIDAgICAgICAgMFxuMyAgICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgMCAgICAwICAgICAgIDBcbiAgICAgd2hlbiB3aWxsIGtlZXAgd29ybGQgbGVmdCBvbmxpIHBob25lIHNlZW4gd2FubmEgWDFuZWcgYmVlbiBkYXlcbjEgICAgICAgMCAgICAwICAgIDAgICAgIDAgICAgMCAgICAwICAgICAwICAgIDAgICAgIDAgICAgIDAgICAgMCAgIDBcbjIgICAgICAgMCAgICAwICAgIDAgICAgIDAgICAgMCAgICAwICAgICAwICAgIDAgICAgIDAgICAgIDAgICAgMCAgIDBcbjMgICAgICAgMCAgICAwICAgIDAgICAgIDAgICAgMCAgICAwICAgICAwICAgIDAgICAgIDAgICAgIDAgICAgMCAgIDBcbiAgICAgbGFzdCBwb3Mgd2lzaCBuaWdodCB3b25kZXIgeW91ciBjb21lIG1heWIgb2xkIG1vcmUgdW50aWwgaGVyXG4xICAgICAgIDAgICAwICAgIDAgICAgIDAgICAgICAwICAgIDAgICAgMCAgICAwICAgMCAgICAwICAgICAwICAgMFxuMiAgICAgICAwICAgMCAgICAwICAgICAwICAgICAgMCAgICAwICAgIDAgICAgMCAgIDAgICAgMCAgICAgMCAgIDBcbjMgICAgICAgMCAgIDAgICAgMCAgICAgMCAgICAgIDAgICAgMCAgICAwICAgIDAgICAwICAgIDAgICAgIDAgICAwXG4gICAgIGxvdmUgbW9tIG1pc3MgYWxsIGNhbiBtb3JuIG5pY2UgdG9kYXkgYXJvdW5kIGZlZWwgaGFwcGkgbWFrZVxuMSAgICAgICAwICAgMCAgICAwICAgMCAgIDAgICAgMCAgICAwICAgICAwICAgICAgMCAgICAwICAgICAwICAgIDBcbjIgICAgICAgMCAgIDAgICAgMCAgIDAgICAwICAgIDAgICAgMCAgICAgMCAgICAgIDAgICAgMCAgICAgMCAgICAwXG4zICAgICAgIDAgICAwICAgIDAgICAwICAgMCAgICAwICAgIDAgICAgIDAgICAgICAwICAgIDAgICAgIDAgICAgMFxuICAgICBzdGFydCB3d3cgYXJlIHR3ZWV0IGRvbnQgbXVjaCBub3QgdGhvdWdoIHR3aXR0ZXIgdGhhbmsgbGlmZVxuMSAgICAgICAgMCAgIDAgICAwICAgICAwICAgIDAgICAgMCAgIDAgICAgICAwICAgICAgIDAgICAgIDAgICAgMFxuMiAgICAgICAgMCAgIDAgICAwICAgICAwICAgIDAgICAgMCAgIDAgICAgICAwICAgICAgIDAgICAgIDAgICAgMFxuMyAgICAgICAgMCAgIDAgICAwICAgICAwICAgIDAgICAgMCAgIDAgICAgICAwICAgICAgIDAgICAgIDAgICAgMFxuICAgICBoYWlyIGRvbiBlbm91Z2ggd2FudCBiZWQgc29vbiBuZXcgd2FzIHlldCBncmVhdCBndXkgd2Vla2VuZFxuMSAgICAgICAwICAgMCAgICAgIDAgICAgMCAgIDAgICAgMCAgIDAgICAwICAgMCAgICAgMCAgIDAgICAgICAgMFxuMiAgICAgICAwICAgMCAgICAgIDAgICAgMCAgIDAgICAgMCAgIDAgICAwICAgMCAgICAgMCAgIDAgICAgICAgMFxuMyAgICAgICAwICAgMCAgICAgIDAgICAgMCAgIDAgICAgMCAgIDAgICAwICAgMCAgICAgMCAgIDAgICAgICAgMFxuICAgICBzaG93IHdheSB5ZWFyIGFtcCBsZWF2IHN1cmUgd2FrZSBnb29kIGhlbHAgaG9tZSBsb3N0IHBsZWFzIGdvdFxuMSAgICAgICAwICAgMCAgICAwICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgICAwICAgMFxuMiAgICAgICAwICAgMCAgICAwICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgICAwICAgMFxuMyAgICAgICAwICAgMCAgICAwICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgICAwICAgMFxuICAgICBoZWFyIHNvcnJpIHZlcmkgZnVuIGhvcGUgc2hvdWxkIHdobyB3aGF0IG5lZWQgbGF0ZXIgc2VlIHNvbWV0aFxuMSAgICAgICAwICAgICAwICAgIDAgICAwICAgIDAgICAgICAwICAgMCAgICAwICAgIDAgICAgIDAgICAwICAgICAgMFxuMiAgICAgICAwICAgICAwICAgIDAgICAwICAgIDAgICAgICAwICAgMCAgICAwICAgIDAgICAgIDAgICAwICAgICAgMFxuMyAgICAgICAwICAgICAwICAgIDAgICAwICAgIDAgICAgICAwICAgMCAgICAwICAgIDAgICAgIDAgICAwICAgICAgMFxuICAgICBmaXJzdCBuZXh0LiB3ZWVrIG9uZSB1c2UgeWVzdGVyZGF5IGhhaGEgb2ZmIHN1biBhd3cgYmVmb3Iga25vd1xuMSAgICAgICAgMCAgICAgMCAgICAwICAgMCAgIDAgICAgICAgICAwICAgIDAgICAwICAgMCAgIDAgICAgIDAgICAgMFxuMiAgICAgICAgMCAgICAgMCAgICAwICAgMCAgIDAgICAgICAgICAwICAgIDAgICAwICAgMCAgIDAgICAgIDAgICAgMFxuMyAgICAgICAgMCAgICAgMCAgICAwICAgMCAgIDAgICAgICAgICAwICAgIDAgICAwICAgMCAgIDAgICAgIDAgICAgMFxuICAgICB0cmkgc29uZyBkaWQgZmluaXNoIGFuaSBuZXZlciBiYWQgbG9sIG92ZXIgd2VsbCBydW4gbWFuIHN1Y2tcbjEgICAgICAwICAgIDAgICAwICAgICAgMCAgIDAgICAgIDAgICAwICAgMCAgICAwICAgIDAgICAwICAgMCAgICAwXG4yICAgICAgMCAgICAwICAgMCAgICAgIDAgICAwICAgICAwICAgMCAgIDAgICAgMCAgICAwICAgMCAgIDAgICAgMFxuMyAgICAgIDAgICAgMCAgIDAgICAgICAwICAgMCAgICAgMCAgIDAgICAwICAgIDAgICAgMCAgIDAgICAwICAgIDBcbiAgICAgYWZ0ZXIgcmFpbiBlbmQgc2FkIGhleSB0aGVyZSB0b21vcnJvdyB0d2l0cGljIHBlb3BsIHNvb28gZWl0aGVyXG4xICAgICAgICAwICAgIDAgICAwICAgMCAgIDAgICAgIDAgICAgICAgIDAgICAgICAgMCAgICAgMCAgICAwICAgICAgMFxuMiAgICAgICAgMCAgICAwICAgMCAgIDAgICAwICAgICAwICAgICAgICAwICAgICAgIDAgICAgIDAgICAgMCAgICAgIDBcbjMgICAgICAgIDAgICAgMCAgIDAgICAwICAgMCAgICAgMCAgICAgICAgMCAgICAgICAwICAgICAwICAgIDAgICAgICAwXG4gICAgIGRvZXNuIHdhdGNoIGV2ZW4gbWVhbiByZWFkIGJlY2F1cyBnYW1lIGhpbSBiZXN0IGxlYXN0IGxldCB0d29cbjEgICAgICAgIDAgICAgIDAgICAgMCAgICAwICAgIDAgICAgICAwICAgIDAgICAwICAgIDAgICAgIDAgICAwICAgMFxuMiAgICAgICAgMCAgICAgMCAgICAwICAgIDAgICAgMCAgICAgIDAgICAgMCAgIDAgICAgMCAgICAgMCAgIDAgICAwXG4zICAgICAgICAwICAgICAwICAgIDAgICAgMCAgICAwICAgICAgMCAgICAwICAgMCAgICAwICAgICAwICAgMCAgIDBcbiAgICAgYW5vdGggZm91bmQgZ29ubmEgdGhlbSBoZWFkIGxpc3RlbiBkYW1uIGNhcmUgYXdlc29tIGludG8gaGVsbFxuMSAgICAgICAgMCAgICAgMCAgICAgMCAgICAwICAgIDAgICAgICAwICAgIDAgICAgMCAgICAgIDAgICAgMCAgICAwXG4yICAgICAgICAwICAgICAwICAgICAwICAgIDAgICAgMCAgICAgIDAgICAgMCAgICAwICAgICAgMCAgICAwICAgIDBcbjMgICAgICAgIDAgICAgIDAgICAgIDAgICAgMCAgICAwICAgICAgMCAgICAwICAgIDAgICAgICAwICAgIDAgICAgMFxuICAgICBjaGVjayBjYW50IGFzbGVlcCB0aXJlIGhpcyBwb3N0IHdlbnQgcHJldHRpIGhhdmVuIHN0dXBpZCBwbGFuXG4xICAgICAgICAwICAgIDAgICAgICAwICAgIDAgICAwICAgIDAgICAgMCAgICAgIDAgICAgIDAgICAgICAwICAgIDBcbjIgICAgICAgIDAgICAgMCAgICAgIDAgICAgMCAgIDAgICAgMCAgICAwICAgICAgMCAgICAgMCAgICAgIDAgICAgMFxuMyAgICAgICAgMCAgICAwICAgICAgMCAgICAwICAgMCAgICAwICAgIDAgICAgICAwICAgICAwICAgICAgMCAgICAwXG4gICAgIHNjaG9vbCBtdXNpYyBzb3VuZCB3b3cgbG90IHN1bW1lciBtb3JuaW5nIHZpZGVvIGJpZyBhbHdheSBleGNpdFxuMSAgICAgICAgIDAgICAgIDAgICAgIDAgICAwICAgMCAgICAgIDAgICAgICAgMCAgICAgMCAgIDAgICAgIDAgICAgIDBcbjIgICAgICAgICAwICAgICAwICAgICAwICAgMCAgIDAgICAgICAwICAgICAgIDAgICAgIDAgICAwICAgICAwICAgICAwXG4zICAgICAgICAgMCAgICAgMCAgICAgMCAgIDAgICAwICAgICAgMCAgICAgICAwICAgICAwICAgMCAgICAgMCAgICAgMFxuICAgICBmZXcgbHVjayBiZXR0ZXIgc3R1ZmYgc2hpdCB0aGVuIHRoYW4gdGFsayBtYW5pIG90aGVyIGRvbmVcbjEgICAgICAwICAgIDAgICAgICAwICAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAgMCAgICAwXG4yICAgICAgMCAgICAwICAgICAgMCAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgIDAgICAgMFxuMyAgICAgIDAgICAgMCAgICAgIDAgICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgICAwICAgIDBcbiAgICAgYWxyZWFkaSB0b25pZ2h0IGhhbmcgZGlkbiBsaXZlIHNpY2sgbWFkZSBpZGVhIHRob3VnaHQgY3V0ZSBzdG9wXG4xICAgICAgICAgIDAgICAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAgICAwICAgIDAgICAgMFxuMiAgICAgICAgICAwICAgICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgICAgMCAgICAwICAgIDBcbjMgICAgICAgICAgMCAgICAgICAwICAgIDAgICAgMCAgICAwICAgIDAgICAgMCAgICAwICAgICAgIDAgICAgMCAgICAwXG4gICAgIG11c3QgZmluYWwgd2FpdCBiaXQgZ290dGEgYWN0dWFsIGh1cnQgbXlzZWxmIGxvbmcgc2VuZCBvdXIgbWVldFxuMSAgICAgICAwICAgICAwICAgIDAgICAwICAgICAwICAgICAgMCAgICAwICAgICAgMCAgICAwICAgIDAgICAwICAgIDBcbjIgICAgICAgMCAgICAgMCAgICAwICAgMCAgICAgMCAgICAgIDAgICAgMCAgICAgIDAgICAgMCAgICAwICAgMCAgICAwXG4zICAgICAgIDAgICAgIDAgICAgMCAgIDAgICAgIDAgICAgICAwICAgIDAgICAgICAwICAgIDAgICAgMCAgIDAgICAgMFxuICAgICB3aGlsZS4gdGhhbmtzIGhhbmQgcmVhZGkgcmlnaHQgYXdheSBmYXIgZW5qb3kgaG90IGd1ZXNzIG1vc3RcbjEgICAgICAgICAwICAgICAgMCAgICAwICAgICAwICAgICAwICAgIDAgICAwICAgICAwICAgMCAgICAgMCAgICAwXG4yICAgICAgICAgMCAgICAgIDAgICAgMCAgICAgMCAgICAgMCAgICAwICAgMCAgICAgMCAgIDAgICAgIDAgICAgMFxuMyAgICAgICAgIDAgICAgICAwICAgIDAgICAgIDAgICAgIDAgICAgMCAgIDAgICAgIDAgICAwICAgICAwICAgIDBcbiAgICAgbW92aSBzaW5jIGF2ZV9zZW50aW1lbnRcbjEgICAgICAgMCAgICAwICAwLjEzNDE2NDA3ODZcbjIgICAgICAgMCAgICAwICAwLjQyNDg1MjkxNTdcbjMgICAgICAgMCAgICAwICAwLjE3MjU2MTE2OTBcbiBbIHJlYWNoZWQgZ2V0T3B0aW9uKFwibWF4LnByaW50XCIpIC0tIG9taXR0ZWQgMTk5NyByb3dzIF1cbiJ9 -->
+<pre><code>     and forward have look the with could follow realli would you
+1      1       1    1    1   2    1     0      0      0     0   0
+2      0       0    0    0   0    0     1      1      1     1   1
+3      0       0    0    0   0    0     0      0      0     0   0
+     for. person tell think this were whi about food had out that
+1       0      0    0     0    0    0   0     0    0   0   0    0
+2       0      0    0     0    0    0   0     0    0   0   0    0
+3       1      1    1     1    1    1   1     0    0   0   0    0
+     they friend quot yes work but com hate http eat said has poor
+1       0      0    0   0    0   0   0    0    0   0    0   0    0
+2       0      0    0   0    0   0   0    0    0   0    0   0    0
+3       0      0    0   0    0   0   0    0    0   0    0   0    0
+     still thing won yeah say call from here now place take where
+1        0     0   0    0   0    0    0    0   0     0    0     0
+2        0     0   0    0   0    0    0    0   0     0    0     0
+3        0     0   0    0   0    0    0    0   0     0    0     0
+     again sleep down get like forgot how someon soo find girl littl
+1        0     0    0   0    0      0   0      0   0    0    0     0
+2        0     0    0   0    0      0   0      0   0    0    0     0
+3        0     0    0   0    0      0   0      0   0    0    0     0
+     she some time vote late bore hour just play too back everyon
+1      0    0    0    0    0    0    0    0    0   0    0       0
+2      0    0    0    0    0    0    0    0    0   0    0       0
+3      0    0    0    0    0    0    0    0    0   0    0       0
+     when will keep world left onli phone seen wanna X1neg been day
+1       0    0    0     0    0    0     0    0     0     0    0   0
+2       0    0    0     0    0    0     0    0     0     0    0   0
+3       0    0    0     0    0    0     0    0     0     0    0   0
+     last pos wish night wonder your come mayb old more until her
+1       0   0    0     0      0    0    0    0   0    0     0   0
+2       0   0    0     0      0    0    0    0   0    0     0   0
+3       0   0    0     0      0    0    0    0   0    0     0   0
+     love mom miss all can morn nice today around feel happi make
+1       0   0    0   0   0    0    0     0      0    0     0    0
+2       0   0    0   0   0    0    0     0      0    0     0    0
+3       0   0    0   0   0    0    0     0      0    0     0    0
+     start www are tweet dont much not though twitter thank life
+1        0   0   0     0    0    0   0      0       0     0    0
+2        0   0   0     0    0    0   0      0       0     0    0
+3        0   0   0     0    0    0   0      0       0     0    0
+     hair don enough want bed soon new was yet great guy weekend
+1       0   0      0    0   0    0   0   0   0     0   0       0
+2       0   0      0    0   0    0   0   0   0     0   0       0
+3       0   0      0    0   0    0   0   0   0     0   0       0
+     show way year amp leav sure wake good help home lost pleas got
+1       0   0    0   0    0    0    0    0    0    0    0     0   0
+2       0   0    0   0    0    0    0    0    0    0    0     0   0
+3       0   0    0   0    0    0    0    0    0    0    0     0   0
+     hear sorri veri fun hope should who what need later see someth
+1       0     0    0   0    0      0   0    0    0     0   0      0
+2       0     0    0   0    0      0   0    0    0     0   0      0
+3       0     0    0   0    0      0   0    0    0     0   0      0
+     first next. week one use yesterday haha off sun aww befor know
+1        0     0    0   0   0         0    0   0   0   0     0    0
+2        0     0    0   0   0         0    0   0   0   0     0    0
+3        0     0    0   0   0         0    0   0   0   0     0    0
+     tri song did finish ani never bad lol over well run man suck
+1      0    0   0      0   0     0   0   0    0    0   0   0    0
+2      0    0   0      0   0     0   0   0    0    0   0   0    0
+3      0    0   0      0   0     0   0   0    0    0   0   0    0
+     after rain end sad hey there tomorrow twitpic peopl sooo either
+1        0    0   0   0   0     0        0       0     0    0      0
+2        0    0   0   0   0     0        0       0     0    0      0
+3        0    0   0   0   0     0        0       0     0    0      0
+     doesn watch even mean read becaus game him best least let two
+1        0     0    0    0    0      0    0   0    0     0   0   0
+2        0     0    0    0    0      0    0   0    0     0   0   0
+3        0     0    0    0    0      0    0   0    0     0   0   0
+     anoth found gonna them head listen damn care awesom into hell
+1        0     0     0    0    0      0    0    0      0    0    0
+2        0     0     0    0    0      0    0    0      0    0    0
+3        0     0     0    0    0      0    0    0      0    0    0
+     check cant asleep tire his post went pretti haven stupid plan
+1        0    0      0    0   0    0    0      0     0      0    0
+2        0    0      0    0   0    0    0      0     0      0    0
+3        0    0      0    0   0    0    0      0     0      0    0
+     school music sound wow lot summer morning video big alway excit
+1         0     0     0   0   0      0       0     0   0     0     0
+2         0     0     0   0   0      0       0     0   0     0     0
+3         0     0     0   0   0      0       0     0   0     0     0
+     few luck better stuff shit then than talk mani other done
+1      0    0      0     0    0    0    0    0    0     0    0
+2      0    0      0     0    0    0    0    0    0     0    0
+3      0    0      0     0    0    0    0    0    0     0    0
+     alreadi tonight hang didn live sick made idea thought cute stop
+1          0       0    0    0    0    0    0    0       0    0    0
+2          0       0    0    0    0    0    0    0       0    0    0
+3          0       0    0    0    0    0    0    0       0    0    0
+     must final wait bit gotta actual hurt myself long send our meet
+1       0     0    0   0     0      0    0      0    0    0   0    0
+2       0     0    0   0     0      0    0      0    0    0   0    0
+3       0     0    0   0     0      0    0      0    0    0   0    0
+     while. thanks hand readi right away far enjoy hot guess most
+1         0      0    0     0     0    0   0     0   0     0    0
+2         0      0    0     0     0    0   0     0   0     0    0
+3         0      0    0     0     0    0   0     0   0     0    0
+     movi sinc ave_sentiment
+1       0    0  0.1341640786
+2       0    0  0.4248529157
+3       0    0  0.1725611690
+ [ reached getOption(&quot;max.print&quot;) -- omitted 1997 rows ]</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5ic3QuY3YgPC0geGdiLmN2KGRhdGEgPSB0eHRtdHggLCBuZm9sZCA9IDEwLCBsYWJlbCA9IGRhdGEubWF0cml4KGRmJHNlbnRpbWVudCksIG5yb3VuZCA9IDUwLCBvYmplY3RpdmUgPSAnYmluYXJ5OmxvZ2lzdGljJywgZXZhbF9tZXRyaWMgPSAnYXVjJylcbmBgYCJ9 -->
+<pre class="r"><code>
+bst.cv &lt;- xgb.cv(data = txtmtx , nfold = 10, label = data.matrix(df$sentiment), nround = 50, objective = 'binary:logistic', eval_metric = 'auc')</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKCmBgYHtyLCBpbmNsdWRlPUZBTFNFfQpyZXF1aXJlKHRpZHl2ZXJzZSkKcmVxdWlyZSh4Z2Jvb3N0KQpyZXF1aXJlKG1ldGhvZHMpCmBgYAoKCgpgYGB7ciByZWFkX2Nzdl9kYXRhLCBlY2hvPVRSVUV9CgpkY2h1cm4gPC0gcmVhZF9jc3YoJy9Vc2Vycy9tcmJpcmRzYWxsL0NvZGUvemlmZi96aWZmLWNoYWxsZW5nZS9kYXRhL2NodXJuLmNzdicsICkKZGNodXJuJGBJbnQnbCBQbGFuYCA9IGFzLm51bWVyaWMoZGNodXJuJGBJbnQnbCBQbGFuYCA9PSAneWVzJyApCmRjaHVybiRgVk1haWwgUGxhbmAgPSBhcy5udW1lcmljKGRjaHVybiRgVk1haWwgUGxhbmAgPT0gJ3llcycgKQppcy5uYShkY2h1cm4pIDwtIGRjaHVybiA9PSAnPycKCmxhYmVsIDwtIGFzLm51bWVyaWMoIGRjaHVybiRgQ2h1cm4/YCA9PSAnVHJ1ZS4nKQoKZGNodXJuJGBEYXkgQ2hhcmdlYCA8LSBhcy5udW1lcmljKGRjaHVybiRgRGF5IENoYXJnZWApCmRjaHVybiRgRXZlIE1pbnNgIDwtIGFzLm51bWVyaWMoZGNodXJuJGBFdmUgTWluc2ApCmRjaHVybiRgRXZlIENhbGxzYCA8LSBhcy5udW1lcmljKGRjaHVybiRgRXZlIENhbGxzYCkKZGNodXJuJGBOaWdodCBDaGFyZ2VgIDwtIGFzLm51bWVyaWMoZGNodXJuJGBOaWdodCBDaGFyZ2VgKQpkY2h1cm4kYEludGwgQ2FsbHNgIDwtIGFzLm51bWVyaWMoZGNodXJuJGBJbnRsIENhbGxzYCkKZGNodXJuJGBJbnRsIENoYXJnZWAgPC0gYXMubnVtZXJpYyhkY2h1cm4kYEludGwgQ2hhcmdlYCkKCgoKZGF0YSA8LSBkY2h1cm4gJT4lCiAgc2VsZWN0KC1YMSwgLWBBcmVhIENvZGVgLCAtUGhvbmUsIC1gQ2h1cm4/YCkgJT4lCiAgbXV0YXRlKHN0YXRlID0gYXMuZmFjdG9yKFN0YXRlKSkgJT4lCiAgbXV0YXRlX2lmKGlzLmNoYXJhY3RlciwgYXMubnVtZXJpYykgJT4lCiAgc2VsZWN0KC1TdGF0ZSwgLXN0YXRlKQoKZGF0YSA8LSBhcy5tYXRyaXgoZGF0YSkKd2VpZ2h0IDwtIGFzLm51bWVyaWMoIHJlcCgxLDMzMzMpICkgLyBsZW5ndGgobGFiZWwpCgpzYXZlKGRhdGEsIGZpbGU9J2RhdGEnKQpzYXZlKGxhYmVsLCBmaWxlPSdsYWJlbCcpCgpgYGAKCldlIG5lZWQgdG8gbG9vayBhdCB0aGUgZGF0YSBzb21lIG1vcmUsIGJ1dCBJIHdhbnQgdG8gZml0IGEgYm9vc3RlZCBtb2RlbCB3aXRoIGFsbCBvZiB0aGUgdmFyaWFibGVzIHRvIHNlZSB3aGF0IHNldCBvZiBlcnJvcnMgSSBnZXQuCgpgYGB7cn0KYnN0LmN2IDwtIHhnYi5jdihkYXRhID0gZGF0YSAsIG5mb2xkID0gMTAsIGxhYmVsID0gbGFiZWwsIG5yb3VuZCA9IDIwLCBvYmplY3RpdmUgPSAnYmluYXJ5OmxvZ2lzdGljJywgZXZhbF9tZXRyaWMgPSAnYXVjJykKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3IgbGlicmFyaWVzLCBpbmNsdWRlPUZBTFNFfQpyZXF1aXJlKHRpZHl2ZXJzZSkKcmVxdWlyZSh0aWR5dGV4dCkKcmVxdWlyZShzZW50aW1lbnRyKQoKcmVxdWlyZSh0bSkKcmVxdWlyZShTbm93YmFsbEMpCnJlcXVpcmUobWV0aG9kcykKCnJlcXVpcmUoRmVhdHVyZUhhc2hpbmcpCnJlcXVpcmUoTWF0cml4KQpyZXF1aXJlKHhnYm9vc3QpCmBgYAoKYGBge3IgcmVhZF9kYXRhfQpkZiA8LSByZWFkX3RzdignL1VzZXJzL21yYmlyZHNhbGwvQ29kZS96aWZmL3ppZmYtY2hhbGxlbmdlL2RhdGEvc2VudGltZW50LnRzdicpCm5hbWVzKGRmKSA8LSBjKCdzZW50aW1lbnQnLCd0ZXh0JykKCmRmJHNlbnRpbWVudCA9IGFzLm51bWVyaWMoZGYkc2VudGltZW50ID09ICdwb3MnKQpzZW50aV92ZWMgPC0gc2VudGltZW50X2J5KGRmJHRleHQpCgoKbXNnX3dvcmRzIDwtIGRmICU+JQogIG11dGF0ZShlbGVtZW50X2lkID0gcm93X251bWJlcigpKSAlPiUKICB1bm5lc3RfdG9rZW5zKHdvcmQsIHRleHQpICU+JQogIGNvdW50KGVsZW1lbnRfaWQsIHdvcmQsIHNvcnQgPSBGQUxTRSkgJT4lCiAgdW5ncm91cCgpCgp0dGxfd29yZHMgPC0gbXNnX3dvcmRzICU+JSBncm91cF9ieShlbGVtZW50X2lkKSAlPiUgc3VtbWFyaXplKHRvdGFsID0gc3VtKG4pKQoKbXNnX3dvcmRzIDwtIGxlZnRfam9pbihtc2dfd29yZHMsIHR0bF93b3JkcykKCm1zZ193b3JkcyA8LSBtc2dfd29yZHMgJT4lCiAgYmluZF90Zl9pZGYod29yZCwgZWxlbWVudF9pZCwgbikKCndvcmRfZHRscyA8LSBsZWZ0X2pvaW4obXNnX3dvcmRzLCBzZW50aV92ZWMsIGJ5PSdlbGVtZW50X2lkJykKc2VudGlfdmVjIDwtIHNlbnRpX3ZlYyAlPiUKICBkaXN0aW5jdChlbGVtZW50X2lkLHNkLCBhdmVfc2VudGltZW50KSAKICAKCmBgYAoKYGBge3J9CmNvcnB1cyA8LSBDb3JwdXMoVmVjdG9yU291cmNlKGRmJHRleHQpKQpjb3JwdXMgPC0gdG1fbWFwKGNvcnB1cywgdG9sb3dlcikKY29ycHVzIDwtIHRtX21hcChjb3JwdXMsIFBsYWluVGV4dERvY3VtZW50KQpjb3JwdXMgPC0gdG1fbWFwKGNvcnB1cywgcmVtb3ZlUHVuY3R1YXRpb24pCmNvcnB1cyA8LSB0bV9tYXAoY29ycHVzLCByZW1vdmVXb3JkcywgYyggc3RvcHdvcmRzKCJlbmdsaXNoIikpKQpjb3JwdXMgPC0gdG1fbWFwKGNvcnB1cywgc3RlbURvY3VtZW50KQoKRFRNIDwtIERvY3VtZW50VGVybU1hdHJpeChjb3JwdXMpCnNwYXJzZV9EVE0gPC0gcmVtb3ZlU3BhcnNlVGVybXMoRFRNLCAwLjk5NSkKCnRleHRTcGFyc2UgPC0gYXMuZGF0YS5mcmFtZShhcy5tYXRyaXgoc3BhcnNlX0RUTSkpCmNvbG5hbWVzKHRleHRTcGFyc2UpIDwtIG1ha2UubmFtZXMoY29sbmFtZXModGV4dFNwYXJzZSkpCnRleHRTcGFyc2UkYXZlX3NlbnRpbWVudCA8LSBzZW50aV92ZWMkYXZlX3NlbnRpbWVudCAKI3RleHRTcGFyc2Ukc2QgPC0gc2VudGlfdmVjJHNkIAoKdHh0bXR4IDwtIGRhdGEubWF0cml4KHRleHRTcGFyc2UpCmBgYAoKCmBgYHtyfQoKYnN0LmN2IDwtIHhnYi5jdihkYXRhID0gdHh0bXR4ICwgbmZvbGQgPSAxMCwgbGFiZWwgPSBkYXRhLm1hdHJpeChkZiRzZW50aW1lbnQpLCBucm91bmQgPSA1MCwgb2JqZWN0aXZlID0gJ2JpbmFyeTpsb2dpc3RpYycsIGV2YWxfbWV0cmljID0gJ2F1YycpCmBgYAoK</div>
 
 
 

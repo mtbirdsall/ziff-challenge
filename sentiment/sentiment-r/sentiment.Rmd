@@ -1,0 +1,72 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r libraries, include=FALSE}
+require(tidyverse)
+require(tidytext)
+require(sentimentr)
+
+require(tm)
+require(SnowballC)
+require(methods)
+
+require(FeatureHashing)
+require(Matrix)
+require(xgboost)
+```
+
+```{r read_data}
+df <- read_tsv('/Users/mrbirdsall/Code/ziff/ziff-challenge/data/sentiment.tsv')
+names(df) <- c('sentiment','text')
+
+df$sentiment = as.numeric(df$sentiment == 'pos')
+senti_vec <- sentiment_by(df$text)
+
+
+msg_words <- df %>%
+  mutate(element_id = row_number()) %>%
+  unnest_tokens(word, text) %>%
+  count(element_id, word, sort = FALSE) %>%
+  ungroup()
+
+ttl_words <- msg_words %>% group_by(element_id) %>% summarize(total = sum(n))
+
+msg_words <- left_join(msg_words, ttl_words)
+
+msg_words <- msg_words %>%
+  bind_tf_idf(word, element_id, n)
+
+word_dtls <- left_join(msg_words, senti_vec, by='element_id')
+senti_vec <- senti_vec %>%
+  distinct(element_id,sd, ave_sentiment) 
+  
+
+```
+
+```{r}
+corpus <- Corpus(VectorSource(df$text))
+corpus <- tm_map(corpus, tolower)
+corpus <- tm_map(corpus, PlainTextDocument)
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeWords, c( stopwords("english")))
+corpus <- tm_map(corpus, stemDocument)
+
+DTM <- DocumentTermMatrix(corpus)
+sparse_DTM <- removeSparseTerms(DTM, 0.995)
+
+textSparse <- as.data.frame(as.matrix(sparse_DTM))
+colnames(textSparse) <- make.names(colnames(textSparse))
+textSparse$ave_sentiment <- senti_vec$ave_sentiment 
+#textSparse$sd <- senti_vec$sd 
+
+txtmtx <- data.matrix(textSparse)
+```
+
+
+```{r}
+
+bst.cv <- xgb.cv(data = txtmtx , nfold = 10, label = data.matrix(df$sentiment), nround = 50, objective = 'binary:logistic', eval_metric = 'auc')
+```
+

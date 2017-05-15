@@ -4,7 +4,7 @@ output: html_notebook
 ---
 
 
-```{r}
+```{r, include=FALSE}
 require(tidyverse)
 require(xgboost)
 require(methods)
@@ -14,8 +14,7 @@ require(methods)
 
 ```{r read_csv_data, echo=TRUE}
 
-testsize = 550000
-dchurn <- read_csv('/Users/mrbirdsall/Code/ziff/data/churn.csv', )
+dchurn <- read_csv('/Users/mrbirdsall/Code/ziff/ziff-challenge/data/churn.csv', )
 dchurn$`Int'l Plan` = as.numeric(dchurn$`Int'l Plan` == 'yes' )
 dchurn$`VMail Plan` = as.numeric(dchurn$`VMail Plan` == 'yes' )
 is.na(dchurn) <- dchurn == '?'
@@ -38,16 +37,16 @@ data <- dchurn %>%
   select(-State, -state)
 
 data <- as.matrix(data)
-
-weight <- as.numeric( rep(1,3333) ) * testsize / length(label)
+weight <- as.numeric( rep(1,3333) ) / length(label)
 
 save(data, file='data')
-save()
+save(label, file='label')
+
 ```
 
 We need to look at the data some more, but I want to fit a boosted model with all of the variables to see what set of errors I get.
 
 ```{r}
-bst.cv <- xgb.cv(data = data , nfold = 10, label = label, nround = 5, objective = 'binary:logistic', eval_metric = 'auc')
+bst.cv <- xgb.cv(data = data , nfold = 10, label = label, nround = 20, objective = 'binary:logistic', eval_metric = 'auc')
 ```
 
