@@ -17,7 +17,7 @@ require(Matrix)
 require(xgboost)
 ```
 
-```{r read_data}
+```{r read_data, include=FALSE}
 df <- read_tsv('/Users/mrbirdsall/Code/ziff/ziff-challenge/data/sentiment.tsv')
 names(df) <- c('sentiment','text')
 
@@ -65,8 +65,9 @@ txtmtx <- data.matrix(textSparse)
 ```
 
 
-```{r}
+```{r, echo=TRUE}
 
 bst.cv <- xgb.cv(data = txtmtx , nfold = 10, label = data.matrix(df$sentiment), nround = 50, objective = 'binary:logistic', eval_metric = 'auc')
+
 ```
 
